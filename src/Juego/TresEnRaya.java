@@ -76,6 +76,8 @@ public class TresEnRaya {
 		System.out.println("Jugador 2 como te quieres llamar: ");
 		jugador2 = sc.next();
 
+		do {
+		
 		System.out.println("Ahora vamos a lanzar una moneda al aire para decidir quien empieza primero");
 		System.out.println();
 		System.out.println(jugador1 + "  eres cara");
@@ -265,7 +267,145 @@ public class TresEnRaya {
 
 			}
 		
+			while (true) {
+				
+				
+				// Partida Jugador 2
+				
+				System.out.println();
+				System.out.println(jugador2 + " Que fila eliges: ");
+				jugador2fila = sc.nextInt();
+				
+				System.out.println(jugador2 + " Que columna eliges: ");
+				jugador2columna = sc.nextInt();
+				
+				while (!basematriz[jugador2fila][jugador2columna].equals(" ")) {
+				    System.out.println("Esta casilla ya está ocupada, elige otra.");
+				    System.out.println();
+				    System.out.println(jugador2 + " Que fila eliges: ");
+				    jugador2fila = sc.nextInt();
+				    System.out.println(jugador2 + " Que columna eliges: ");
+				    jugador2columna = sc.nextInt();
+				}
+				
+				if(basematriz[jugador2fila][jugador2columna] == " ") {
+					   basematriz[jugador2fila][jugador2columna] = "X";
+				   } 
+				   
+				   
+			   System.out.println();
+			   for (int i = 0; i < basematriz.length; i++) {
+					
+				    for (int j = 0; j < basematriz[i].length; j++) {
+				        System.out.print(basematriz[i][j] + " ");	
+				
+				    }
+
+				    System.out.println("");
+
+				}
+
+			    contador ++;
+
+			    if(contador == 5) {
+			    	System.out.println();
+					System.out.println("Empate");
+					  break;
+				  }
+			    
+				//Comprobar que ha ganado Jugador 2
+
+			    if(basematriz[0][0].equals("X") && basematriz[0][2].equals("X") && basematriz[0][4].equals("X") 
+			 	|| basematriz[2][0].equals("X") && basematriz[2][2].equals("X") && basematriz[2][4].equals("X")
+			 	|| basematriz[4][0].equals("X") && basematriz[4][2].equals("X") && basematriz[4][4].equals("X")
+			 	|| basematriz[0][0].equals("X") && basematriz[2][0].equals("X") && basematriz[4][0].equals("X")
+			 	|| basematriz[0][2].equals("X") && basematriz[2][2].equals("X") && basematriz[4][2].equals("X")
+			 	|| basematriz[0][4].equals("X") && basematriz[2][4].equals("X") && basematriz[4][4].equals("X")
+			 	|| basematriz[0][0].equals("X") && basematriz[2][2].equals("X") && basematriz[4][4].equals("X")
+			 	|| basematriz[0][4].equals("X") && basematriz[2][2].equals("X") && basematriz[4][0].equals("X")) {
+			 	System.out.println();
+			 	System.out.println("Has ganado " + jugador2);
+			 	ganador2 ++;
+			 	break;
+			 	}
+			    
+			   // Partida Jugador 1
+			   
+			   System.out.println();
+			   System.out.println(jugador1 + " Que fila eliges: ");
+				jugador1fila = sc.nextInt();
+				
+				System.out.println(jugador1 + " Que columna eliges: ");
+				jugador1columna = sc.nextInt();
+				
+				while (!basematriz[jugador1fila][jugador1columna].equals(" ")) {
+				    System.out.println("Esta casilla ya está ocupada, elige otra.");
+				    System.out.println();
+				    System.out.println(jugador1 + " Que fila eliges: ");
+				    jugador1fila = sc.nextInt();
+				    System.out.println(jugador1 + " Que columna eliges: ");
+				    jugador1columna = sc.nextInt();
+				}
+				
+				if(basematriz[jugador1fila][jugador1columna] == " ") {
+					   basematriz[jugador1fila][jugador1columna] = "O";
+				   } 
+				   
+				   
+			   System.out.println();
+			   for (int i = 0; i < basematriz.length; i++) {
+					
+				    for (int j = 0; j < basematriz[i].length; j++) {
+				        System.out.print(basematriz[i][j] + " ");	
+				        
+				    }
+
+				    System.out.println("");
+				    
+				}
+
+			 //Comprobar que ha ganado Jugador 1
+
+			   if(basematriz[0][0].equals("O") && basematriz[0][2].equals("O") && basematriz[0][4].equals("O") 
+			   || basematriz[2][0].equals("O") && basematriz[2][2].equals("O") && basematriz[2][4].equals("O")
+			   || basematriz[4][0].equals("O") && basematriz[4][2].equals("O") && basematriz[4][4].equals("O")
+			   || basematriz[0][0].equals("O") && basematriz[2][0].equals("O") && basematriz[4][0].equals("O")
+			   || basematriz[0][2].equals("O") && basematriz[2][2].equals("O") && basematriz[4][2].equals("O")
+			   || basematriz[0][4].equals("O") && basematriz[2][4].equals("O") && basematriz[4][4].equals("O")
+			   || basematriz[0][0].equals("O") && basematriz[2][2].equals("O") && basematriz[4][4].equals("O")
+			   || basematriz[0][4].equals("O") && basematriz[2][2].equals("O") && basematriz[4][0].equals("O")) {
+					System.out.println();
+					System.out.println("Has ganado " + jugador1);
+						ganador1 ++;
+						break;
+						   }
+			
+				}
+			
+				
+				// Puntos 
+				
+				System.out.println();
+				System.out.println("Puntuacion de " + jugador1 + ": " + ganador1);
+				System.out.println("Puntuacion de " + jugador2 + ": " + ganador2);
+				System.out.println("");
+				System.out.println("Revancha? (Si/No)");
+				System.out.println("1 = Si");
+				System.out.println("-1 = No");	
+				revancha = sc.nextInt();
+				System.out.println("");
+				
+				
 			}
+				
+			
+			if(revancha == 1) {
+				basematriz = resetbasematriz;
+				contador = 0;
+			}
+			
+			
+		}while(revancha != -1);
 		
 		
 		
